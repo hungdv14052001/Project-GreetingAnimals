@@ -1,0 +1,115 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using GreetingAnimalsAPI.Data;
+using GreetingAnimalsAPI.Models;
+using GreetingAnimalsAPI.Repositories;
+using Microsoft.Extensions.Configuration;
+
+namespace GreetingAnimalsAPI.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class PlayersController : ControllerBase
+    {
+        private readonly PlayerRepository playerRepository;
+
+        /// <summary>
+        /// Initialization Player Controller
+        /// </summary>
+        /// <param name="context"></param>
+        public PlayersController(EntityContext context)
+        {
+            playerRepository = new PlayerRepository(context);
+        }
+
+        /// <summary>
+        /// Get list Players in API
+        /// GET: api/Players
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Player>>> GetPlayers()
+        {
+            return playerRepository.GetAllEntity();
+        }
+
+        /// <summary>
+        /// get Player in API
+        /// GET: api/Players/5
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Player</returns>
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Player>> GetPlayer(int id)
+        {
+            var player = playerRepository.GetEntityById(id);
+
+            if (player == null)
+            {
+                return NotFound("Not Found!");
+            }
+            else
+            {
+                return player;
+            }
+        }
+
+        /// <summary>
+        /// Update API
+        /// PUT: api/Players/5
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="User"></param>
+        /// <returns></returns>
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Putplayer(int id, Player player)
+        {
+            try
+            {
+                playerRepository.UpdateEntity(id, player);
+            }
+            catch
+            {
+
+            }
+            return NoContent();
+        }
+
+        /// <summary>
+        /// Create new Player
+        /// POST: api/Players
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns>Player</returns>
+        [HttpPost]
+        public async Task<ActionResult<Player>> PostPlayer(Player player)
+        {
+            return playerRepository.CreateEntity(player) as Player;
+        }
+
+        /// <summary>
+        /// Delete Player on API
+        /// DELETE: api/Players/5
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePlayer(int id)
+        {
+            try
+            {
+                playerRepository.DeleteEntityById(id);
+            }
+            catch
+            {
+
+            }
+            return NoContent();
+        }
+    }
+}
