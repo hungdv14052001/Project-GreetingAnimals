@@ -1,30 +1,30 @@
-﻿using System;
+﻿using GreetingAnimalsAPI.Models;
+using System;
 using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GreetingAnimalsAPI.Models
+namespace GreetingAnimalsAPI.Response
 {
-    public class ResultLogin
+    public class LoginRespone
     {
         private string token;
         private Admin admin;
 
         /// <summary>
-        /// Result Login initialization without parameter
+        /// Login Respone initialization without parameter
         /// </summary>
-        public ResultLogin()
+        public LoginRespone()
         {
 
         }
 
         /// <summary>
-        /// Result Login initialization with parameter
+        /// Login Respone initialization with parameter
         /// </summary>
         /// <param name="token"></param>
         /// <param name="admin"></param>
-        public ResultLogin(string token, Admin admin)
+        public LoginRespone(string token, Admin admin)
         {
             this.token = token;
             this.admin = admin;

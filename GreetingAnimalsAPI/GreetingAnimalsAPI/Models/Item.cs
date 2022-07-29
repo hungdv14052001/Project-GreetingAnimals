@@ -15,6 +15,7 @@ namespace GreetingAnimalsAPI.Models
         private int priceBuy;
         private int priceSale;
         private int category;
+        private string image;
 
         /// <summary>
         /// Item initialization without parameter
@@ -38,7 +39,7 @@ namespace GreetingAnimalsAPI.Models
         /// <param name="category"></param>
         /// <param name="createdDate"></param>
         /// <param name="updatedDate"></param>
-        public Item(int id, string name, double speed, double strenght, double weight, double height, int priceBuy, int priceSale, int category, DateTime createdDate, DateTime updatedDate) : base(id, createdDate, updatedDate)
+        public Item(int id, string name, double speed, double strenght, double weight, double height, int priceBuy, int priceSale, int category, string image, DateTime createdDate, DateTime updatedDate) : base(id, createdDate, updatedDate)
         {
             this.name = name;
             this.speed = speed;
@@ -48,6 +49,7 @@ namespace GreetingAnimalsAPI.Models
             this.priceBuy = priceBuy;
             this.priceSale = priceSale;
             this.category = category;
+            this.image = image;
         }
 
         public string Name { get => name; set => name = value; }
@@ -58,5 +60,6 @@ namespace GreetingAnimalsAPI.Models
         public int PriceBuy { get => priceBuy; set => priceBuy = value; }
         public int PriceSale { get => priceSale; set => priceSale = value; }
         public int Category { get => category; set => category = value; }
+        public string Image { get => image; set => image = value; }
     }
 }

@@ -75,7 +75,7 @@ namespace GreetingAnimalsAPI.Controllers
             }
             catch
             {
-
+                throw;
             }
             return NoContent();
         }
@@ -107,7 +107,7 @@ namespace GreetingAnimalsAPI.Controllers
             }
             catch
             {
-
+                throw;
             }
             return NoContent();
         }

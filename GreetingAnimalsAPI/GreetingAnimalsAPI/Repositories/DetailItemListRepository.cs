@@ -20,13 +20,7 @@ namespace GreetingAnimalsAPI.Repositories
         public List<DetailItemList> GetDetailItemListsByIdPlayer(int idPlayer)
         {
             var result = new List<DetailItemList>();
-            foreach (DetailItemList detailItemList in GetAllEntity())
-            {
-                if (detailItemList.IdPlayer == idPlayer)
-                {
-                    result.Add(detailItemList);
-                }
-            }
+            result = GetAllEntity().Where(d => d.IdPlayer == idPlayer).ToList();
             return result;
         }
     }

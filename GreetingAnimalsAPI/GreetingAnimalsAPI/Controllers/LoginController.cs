@@ -13,6 +13,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
+using GreetingAnimalsAPI.Response;
 
 namespace GreetingAnimalsAPI.Controllers
 {
@@ -41,9 +42,9 @@ namespace GreetingAnimalsAPI.Controllers
         /// <returns>ResultLogin</returns>
         [HttpPost]
         [Route("AdminLogin")]
-        public async Task<ResultLogin> AdminLogin(AdminLogin adminLogin)
+        public async Task<LoginRespone> AdminLogin(AdminLogin adminLogin)
         {
-            ResultLogin result = new ResultLogin();
+            LoginRespone result = new LoginRespone();
             Admin admin = adminRepository.checkLogin(adminLogin);
 
             if (admin != null)
