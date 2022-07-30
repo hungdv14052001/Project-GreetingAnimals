@@ -67,7 +67,15 @@ namespace GreetingAnimalsAPI.Controllers
         [HttpGet("idPlayer={idPlayer}")]
         public async Task<ActionResult<IEnumerable<DetailItemList>>> GetDetailItemListByIdPlayer(int idPlayer)
         {
-            return detailItemListRepository.GetDetailItemListsByIdPlayer(idPlayer);
+            
+            try
+            {
+                return detailItemListRepository.GetDetailItemListsByIdPlayer(idPlayer);
+            }
+            catch(Exception exp)
+            {
+                throw exp;
+            }
         }
         /// <summary>
         /// Update API
@@ -77,7 +85,7 @@ namespace GreetingAnimalsAPI.Controllers
         /// <param name="detailItemList"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutDetailItemList(int id, DetailItemList detailItemList)
+        public async Task<IActionResult> UpdateDetailItemList(int id, DetailItemList detailItemList)
         {
             try
             {
@@ -97,7 +105,7 @@ namespace GreetingAnimalsAPI.Controllers
         /// <param name="player"></param>
         /// <returns>DetailItemList</returns>
         [HttpPost]
-        public async Task<ActionResult<DetailItemList>> PostDetailItemList(DetailItemList detailItemList)
+        public async Task<ActionResult<DetailItemList>> CreateDetailItemList(DetailItemList detailItemList)
         {
             return detailItemListRepository.CreateEntity(detailItemList) as DetailItemList;
         }

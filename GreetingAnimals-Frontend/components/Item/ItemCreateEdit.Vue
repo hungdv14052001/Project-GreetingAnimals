@@ -32,7 +32,7 @@
                         </div>
                     </div>
                     <div v-if="isCategory" class="validate-contairner">
-                        <div class="validate-text">*Enter email</div>
+                        <div class="validate-text">*Enter category</div>
                     </div>
                 </div>
             </div>
@@ -108,7 +108,7 @@
                         </div>
                     </div>
                     <div v-if="isBuy" class="validate-contairner">
-                        <div class="validate-text">*Enter name</div>
+                        <div class="validate-text">*Enter price buy</div>
                     </div>
                 </div>
                 <div class="col">
@@ -134,6 +134,7 @@
     </div>
 </template>
 <script>
+    import { postData, putData } from "../../assets/js/main.js";
     const itemAPI= 'https://localhost:44346/api/Items';
     const categoryList=[{id: 1 , name:"Food"}, {id: 2 , name:"Equipment"}];
     export default {
@@ -283,39 +284,8 @@
                         });
             },
 
-            /// <summary>
-            /// post data into API
-            /// </summary>
-            /// <param name="url"></param>
-            /// <param name="data"></param>
-            /// <returns>response.json()</returns>
-            async postData(url = '', data = {}) {
-                const response = await fetch(url, {
-                    method: 'POST',
-                    headers: {
-                    'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data) 
-                });
-                return response.json(); 
-            },
-
-            /// <summary>
-            /// put data in API
-            /// </summary>
-            /// <param name="url"></param>
-            /// <param name="data"></param>
-            /// <returns>response.json()</returns>
-            async putData(url = '', data = {}) {
-                const response = await fetch(url, {
-                    method: 'PUT',
-                    headers: {
-                    'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data) 
-                });
-                return response.json();
-            },
+            postData,
+            putData,
         }
     }
 

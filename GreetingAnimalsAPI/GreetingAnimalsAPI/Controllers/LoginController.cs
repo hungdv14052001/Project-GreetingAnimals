@@ -14,6 +14,7 @@ using System.Text;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
 using GreetingAnimalsAPI.Response;
+using GreetingAnimalsAPI.Dto;
 
 namespace GreetingAnimalsAPI.Controllers
 {
@@ -45,12 +46,13 @@ namespace GreetingAnimalsAPI.Controllers
         public async Task<LoginRespone> AdminLogin(AdminLogin adminLogin)
         {
             LoginRespone result = new LoginRespone();
-            Admin admin = adminRepository.checkLogin(adminLogin);
+            Admin admin = adminRepository.CheckLogin(adminLogin);
 
             if (admin != null)
             {
                 result.Token = getToken(admin);
-                result.Admin = admin ;
+                AdminDto adminDto = new AdminDto(admin);
+                result.Admin = adminDto;
                 return result;
             }
             else

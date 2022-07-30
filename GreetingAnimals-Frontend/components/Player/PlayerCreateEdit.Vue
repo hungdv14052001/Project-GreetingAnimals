@@ -120,7 +120,7 @@
     </div>
 </template>
 <script>
-    const playerAPI= 'https://localhost:44346/api/Players';
+    import { playerAPI } from "../../assets/js/main.js";
     export default {
         
         /// <summary>

@@ -135,7 +135,7 @@
                     <div class="col-actionPlayer">
                         <NuxtLink class="btnEdit" :to="{ name: 'playerCreateEditPage', params: { id: player.id}}">Detail</NuxtLink>
                         <button class="btnDelete">Lock</button>
-                        <NuxtLink class="btnItem" :to="{ name: '', params: { id: player.id}}">Items</NuxtLink>
+                        <NuxtLink class="btnItem" :to="{ name: 'itemListPage', params: { id: player.id}}">Items</NuxtLink>
                     </div>
                 </div>
             </div>    
@@ -143,8 +143,7 @@
     </div>
 </template>
 <script>
-    const playerAPI= 'https://localhost:44346/api/Players';
-    const playerDeleteAPI= 'https://localhost:44346/api/Players/';
+    import { playerAPI } from "../../assets/js/main.js";
     export default {
 
         /// <summary>

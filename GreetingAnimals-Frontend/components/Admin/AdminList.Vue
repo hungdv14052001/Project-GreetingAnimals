@@ -119,8 +119,7 @@
     </div>
 </template>
 <script>
-    const adminAPI= 'https://localhost:44346/api/Admins';
-    const adminDeleteAPI= 'https://localhost:44346/api/Admins/';
+    import { adminAPI, dellObject } from "../../assets/js/main.js";
     export default {
 
         /// <summary>
@@ -232,32 +231,12 @@
             /// <returns>response.json()</returns>
             confirmDelete(id) {
                 if (confirm('Do you want to delete this Admin?')) {
-                    this.dellAdmin(id);
+                    dellObject(id, adminAPI);
                 } else {
                     alert("Cancelled");
                 }
             },
-
-            /// <summary>
-            /// delete data from API
-            /// </summary>
-            /// <param name="url"></param>
-            /// <param name="data"></param>
-            /// <returns>response.json()</returns>
-            dellAdmin(id){
-                var option ={
-                    method: 'DELETE',
-                    header:{
-                        'Content-Type' : 'application/json'
-                    },
-                };
-                fetch(adminDeleteAPI+id, option)
-                    .then(function(response) {
-                        response.json();
-                    });
-                location.reload();
-                alert("successful delete!");
-            }
+            dellObject,
         }
     }
 

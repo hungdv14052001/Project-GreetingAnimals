@@ -67,7 +67,7 @@ namespace GreetingAnimalsAPI.Controllers
         /// <param name="User"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        public async Task<IActionResult> Putplayer(int id, Player player)
+        public async Task<IActionResult> UpdatePlayer(int id, Player player)
         {
             try
             {
@@ -87,9 +87,17 @@ namespace GreetingAnimalsAPI.Controllers
         /// <param name="player"></param>
         /// <returns>Player</returns>
         [HttpPost]
-        public async Task<ActionResult<Player>> PostPlayer(Player player)
+        public async Task<ActionResult<Player>> CreatePlayer(Player player)
         {
-            return playerRepository.CreateEntity(player) as Player;
+            
+            try
+            {
+                return playerRepository.CreateEntity(player) as Player;
+            }
+            catch (Exception exp)
+            {
+                throw
+            }
         }
 
         /// <summary>

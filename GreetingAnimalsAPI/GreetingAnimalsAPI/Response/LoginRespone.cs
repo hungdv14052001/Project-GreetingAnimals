@@ -1,4 +1,5 @@
-﻿using GreetingAnimalsAPI.Models;
+﻿using GreetingAnimalsAPI.Dto;
+using GreetingAnimalsAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace GreetingAnimalsAPI.Response
     public class LoginRespone
     {
         private string token;
-        private Admin admin;
+        private AdminDto admin;
 
         /// <summary>
         /// Login Respone initialization without parameter
@@ -24,13 +25,13 @@ namespace GreetingAnimalsAPI.Response
         /// </summary>
         /// <param name="token"></param>
         /// <param name="admin"></param>
-        public LoginRespone(string token, Admin admin)
+        public LoginRespone(string token, AdminDto admin)
         {
             this.token = token;
             this.admin = admin;
         }
 
         public string Token { get => token; set => token = value; }
-        public Admin Admin { get => admin; set => admin = value; }
+        public AdminDto Admin { get => admin; set => admin = value; }
     }
 }

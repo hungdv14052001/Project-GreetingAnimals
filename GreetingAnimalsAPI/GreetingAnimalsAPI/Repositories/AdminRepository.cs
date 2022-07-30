@@ -17,7 +17,7 @@ namespace GreetingAnimalsAPI.Repositories
         {
         }
         
-        public Admin checkLogin(AdminLogin adminLogin)
+        public Admin CheckLogin(AdminLogin adminLogin)
         {
             Admin admin= null;
             admin = GetAllEntity().FirstOrDefault(a => a.Email.ToLower().Equals(adminLogin.UserName) && a.Password.Equals(adminLogin.Password));

@@ -67,7 +67,7 @@ namespace GreetingAnimalsAPI.Controllers
         /// <param name="admin"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAdmin(int id, Admin admin)
+        public async Task<IActionResult> UpdateAdmin(int id, Admin admin)
         {
             try
             {
@@ -87,9 +87,16 @@ namespace GreetingAnimalsAPI.Controllers
         /// <param name="admin"></param>
         /// <returns>Admin</returns>
         [HttpPost]
-        public async Task<ActionResult<Admin>> PostAdmin(Admin admin)
+        public async Task<ActionResult<Admin>> CreateAdmin(Admin admin)
         {
-            return adminRepository.CreateEntity(admin) as Admin;
+            try
+            {
+                return adminRepository.CreateEntity(admin) as Admin;
+            }
+            catch(Exception exp)
+            {
+                throw exp;
+            }
         }
 
         /// <summary>

@@ -118,7 +118,7 @@
     </div>
 </template>
 <script>
-    const adminAPI= 'https://localhost:44346/api/Admins';
+    import { adminAPI, postData, putData } from "../../assets/js/main.js";
     export default {
         /// <summary>
         /// get admin
@@ -237,11 +237,11 @@
             /// </summary>
             /// <param name="dataAdmin"></param>
             create(dataAdmin){
-                this.postData(adminAPI, dataAdmin)
-                        .then(data => {
-                            alert("Successful add!");
-                            this.$router.push("adminListPage");
-                        });
+                postData(adminAPI, dataAdmin)
+                    .then(data => {
+                        alert("Successful add!");
+                        this.$router.push("adminListPage");
+                    });
             },
 
             /// <summary>
@@ -250,45 +250,13 @@
             /// <param name="dataAdmin"></param>
             /// <returns></returns>
             async edit(dataAdmin){
-                this.putData(adminAPI+'/'+this.currentIdAdmin, dataAdmin)
-                        .then(data => {
-                            
-                        });
+                putData(adminAPI+'/'+this.currentIdAdmin, dataAdmin)
+                    .then(data => {
+                        
+                    });
             },
-
-            /// <summary>
-            /// post data into API
-            /// </summary>
-            /// <param name="url"></param>
-            /// <param name="data"></param>
-            /// <returns>response.json()</returns>
-            async postData(url = '', data = {}) {
-                const response = await fetch(url, {
-                    method: 'POST',
-                    headers: {
-                    'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data) 
-                });
-                return response.json(); 
-            },
-
-            /// <summary>
-            /// put data in API
-            /// </summary>
-            /// <param name="url"></param>
-            /// <param name="data"></param>
-            /// <returns>response.json()</returns>
-            async putData(url = '', data = {}) {
-                const response = await fetch(url, {
-                    method: 'PUT',
-                    headers: {
-                    'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data) 
-                });
-                return response.json();
-            },
+            postData,
+            pushData,
         }
     }
 

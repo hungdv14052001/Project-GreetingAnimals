@@ -14,7 +14,7 @@
                         Name
                     </div>
                     <div class="col">
-                        
+                        Id player
                     </div>
                 </div>
                 <div class="row row-control">
@@ -25,6 +25,16 @@
                             </div>
                             <div class="txt-contairner">
                                 <input class="txt-control" type="text" placeholder="Name" v-model="keyName" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="control-contairner">
+                            <div class="iconcontrol">
+                                <div class="icon-item"></div>
+                            </div>
+                            <div class="txt-contairner">
+                                <input class="txt-control" type="text" placeholder="Id Player" v-model="idPlayer" />
                             </div>
                         </div>
                     </div>
@@ -121,8 +131,9 @@
     </div>
 </template>
 <script>
-    const adminAPI= 'https://localhost:44346/api/Items';
-    const adminDeleteAPI= 'https://localhost:44346/api/Items/';
+    const itemAPI= 'https://localhost:44346/api/Items';
+    const itemDeleteAPI= 'https://localhost:44346/api/Items/';
+    const itemPlayersAPI= 'https://localhost:44346/api/DetailItemLists/idPlayer=';
     const categoryList=["Food", "Equipment"];
     export default {
 
@@ -131,10 +142,11 @@
         /// </summary>
         /// <returns></returns>
         async beforeMount(){
-            this.itemList= await fetch(adminAPI)
+            this.itemList= await fetch(itemAPI)
                 .then((res)=>res.json());
             this.itemListDisPlay= this.itemList;
             this.total= this.itemList.length;
+            this.setListByIdPlayer();
         },
         data(){
             return{
@@ -150,6 +162,7 @@
                 isSearch: true,
                 iconSearch: '▼',
                 total: 0,
+                idPlayer: this.$route.params.id,
             };
         },
 
@@ -191,9 +204,44 @@
             /// <returns></returns>
             search(){
                 var keyName=this.keyName;
-                this.itemListDisPlay= this.itemList.filter(function(item){
-                    return item.name.toLowerCase().includes(keyName.toLowerCase());
-                })
+                var idPlayer=this.idPlayer;
+                if(keyName.length==0&&idPlayer.length!=0){
+                    this.setListByIdPlayer();
+                }
+                else if(typeof(idPlayer) != 'undefined'&&keyName.length!=0){
+                    this.itemListDisPlay= this.itemList.filter(function(item){
+                        return item.name.toLowerCase().includes(keyName.toLowerCase());
+                    })
+                    this.total= this.itemListDisPlay.length;
+                }
+                else{
+                    this.setListByIdPlayer();
+                    this.itemListDisPlay= this.itemListDisPlay.filter(function(item){
+                        return item.name.toLowerCase().includes(keyName.toLowerCase());
+                    })
+                    this.total= this.itemListDisPlay.length;
+                }
+                
+            },
+
+            /// <summary>
+            /// set item list by id Player
+            /// </summary>
+            /// <returns></returns>
+            async setListByIdPlayer(){
+                var id= this.idPlayer;
+                if(typeof(id) != 'undefined'){
+                    var itemPlayers= await fetch(itemPlayersAPI+id)
+                        .then((res)=>res.json());
+                    var arrayId = '';
+                    itemPlayers.forEach(element => {
+                        arrayId+=element.idItem;
+                    });
+                    this.itemListDisPlay= this.itemList.filter(function(item){
+                        return arrayId.includes(item.id);
+                    })
+                    this.total= this.itemListDisPlay.length;
+                }
             },
 
             /// <summary>
@@ -232,27 +280,6 @@
                     alert("Cancelled");
                 }
             },
-
-            /// <summary>
-            /// delete data from API
-            /// </summary>
-            /// <param name="url"></param>
-            /// <param name="data"></param>
-            /// <returns>response.json()</returns>
-            dellAdmin(id){
-                var option ={
-                    method: 'DELETE',
-                    header:{
-                        'Content-Type' : 'application/json'
-                    },
-                };
-                fetch(adminDeleteAPI+id, option)
-                    .then(function(response) {
-                        response.json();
-                    });
-                location.reload();
-                alert("successful delete!");
-            }
         }
     }
 
