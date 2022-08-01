@@ -3,24 +3,26 @@
         <div class="create-edit-title">
             {{title}}
         </div>
-        <div class="admin-create-edit-contairner">
-            <div class="row row-controlE">
-                <div class="col">
-                    <div class="control-contairnerE">
+        <b-container class="admin-create-edit-contairner">
+            <b-form class="row row-controlE">
+                <b-form-group class="col control-padding" >
+                    <div class="control-contairnerEdit">
                         Name
                         <div class="iconcontrol ml10">
                             <div class="icon-item"></div>
                         </div>
                         <div class="txt-contairner">
-                            <input class="txt-control" type="text" placeholder="Name" v-model="name" />
+                            <b-form-input  placeholder="Enter name" class="txt-control" v-model="name"
+                            v-bind:class="{'is-invalid': errors.name}"
+                            v-validate="'required|alpha'"></b-form-input>
                         </div>
                     </div>
-                    <div v-if="isName" class="validate-contairner">
-                        <div class="validate-text">*Enter name</div>
+                    <div class="validate-edit">
+                        {{errors.name}}
                     </div>
-                </div>
-                <div class="col">
-                    <div class="control-contairnerE">
+                </b-form-group>
+                <b-form-group class="col control-padding" >
+                    <div class="control-contairnerEdit">
                         Category
                         <div class="iconcontrol ml10">
                             <div class="icon-item"></div>
@@ -31,102 +33,111 @@
                             </select>
                         </div>
                     </div>
-                    <div v-if="isCategory" class="validate-contairner">
-                        <div class="validate-text">*Enter category</div>
-                    </div>
-                </div>
-            </div>
-            <div class="row row-controlE">
-                <div class="col">
-                    <div class="control-contairnerE">
+                </b-form-group>   
+            </b-form>
+            <b-form class="row row-controlE">
+                <b-form-group class="col control-padding" >
+                    <div class="control-contairnerEdit">
                         Speed
                         <div class="iconcontrol ml10">
                             <div class="icon-item"></div>
                         </div>
                         <div class="txt-contairner">
-                            <input class="txt-control" type="text" placeholder="Speed" v-model="speed" />
+                            <b-form-input  placeholder="Enter strenght" class="txt-control" v-model="speed"
+                            v-bind:class="{'is-invalid': errors.speed}"
+                            v-validate="'required|alpha'"></b-form-input>
                         </div>
                     </div>
-                    <div v-if="isSpeed" class="validate-contairner">
-                        <div class="validate-text">*Enter speed</div>
+                    <div class="validate-edit">
+                        {{errors.speed}}
                     </div>
-                </div>
-                <div class="col">
-                    <div class="control-contairnerE">
+                </b-form-group>
+                <b-form-group class="col control-padding">
+                    <div class="control-contairnerEdit">
                         Strenght
                         <div class="iconcontrol ml10">
                             <div class="icon-item"></div>
                         </div>
                         <div class="txt-contairner">
-                            <input class="txt-control" type="text" placeholder="Strenght" v-model="strenght" />
+                            <b-form-input  placeholder="Enter strenght" class="txt-control" v-model="strenght"
+                            v-bind:class="{'is-invalid': errors.strenght}"
+                            v-validate="'required|alpha'"></b-form-input>
                         </div>
                     </div>
-                    <div v-if="isStrenght" class="validate-contairner">
-                        <div class="validate-text">*Enter strenght</div>
+                    <div class="validate-edit">
+                        {{errors.strenght}}
                     </div>
-                </div>
-            </div>
-            <div class="row row-controlE">
-                <div class="col">
-                    <div class="control-contairnerE">
+                </b-form-group>
+            </b-form>
+            <b-form class="row row-controlE">
+                <b-form-group class="col control-padding" >
+                    <div class="control-contairnerEdit">
                         Weight
                         <div class="iconcontrol ml10">
                             <div class="icon-item"></div>
                         </div>
                         <div class="txt-contairner">
-                            <input class="txt-control" type="text" placeholder="Weight" v-model="weight" />
+                            <b-form-input  placeholder="Enter weight" class="txt-control" v-model="weight"
+                            v-bind:class="{'is-invalid': errors.weight}"
+                            v-validate="'required|alpha'"></b-form-input>
                         </div>
                     </div>
-                    <div v-if="isWeight" class="validate-contairner">
-                        <div class="validate-text">*Enter weight</div>
+                    <div class="validate-edit">
+                        {{errors.weight}}
                     </div>
-                </div>
-                <div class="col">
-                    <div class="control-contairnerE">
+                </b-form-group>
+                <b-form-group class="col control-padding">
+                    <div class="control-contairnerEdit">
                         Height
                         <div class="iconcontrol ml10">
                             <div class="icon-item"></div>
                         </div>
                         <div class="txt-contairner">
-                            <input class="txt-control" type="text" placeholder="Height" v-model="height" />
+                            <b-form-input  placeholder="Enter height" class="txt-control" v-model="height"
+                            v-bind:class="{'is-invalid': errors.height}"
+                            v-validate="'required|alpha'"></b-form-input>
                         </div>
                     </div>
-                    <div v-if="isHeight" class="validate-contairner">
-                        <div class="validate-text">*Enter height</div>
+                    <div class="validate-edit">
+                        {{errors.height}}
                     </div>
-                </div>
-            </div>
-            <div class="row row-controlE">
-                <div class="col">
-                    <div class="control-contairnerE">
+                </b-form-group>
+            </b-form>
+            <b-form class="row row-controlE">
+                <b-form-group class="col control-padding" >
+                    <div class="control-contairnerEdit">
                         Price
                         <div class="iconcontrol ml10">
                             <div class="icon-item"></div>
                         </div>
                         <div class="txt-contairner">
-                            <input class="txt-control" type="text" placeholder="Price" v-model="priceBuy" />
+                            <b-form-input  placeholder="Enter price" class="txt-control" v-model="priceBuy"
+                            v-bind:class="{'is-invalid': errors.priceBuy}"
+                            v-validate="'required|alpha'"></b-form-input>
                         </div>
                     </div>
-                    <div v-if="isBuy" class="validate-contairner">
-                        <div class="validate-text">*Enter price buy</div>
+                    <div class="validate-edit">
+                        {{errors.priceBuy}}
                     </div>
-                </div>
-                <div class="col">
-                    <div class="control-contairnerE">
+                </b-form-group>
+                <b-form-group class="col control-padding">
+                    <div class="control-contairnerEdit">
                         Sale
                         <div class="iconcontrol ml10">
                             <div class="icon-item"></div>
                         </div>
                         <div class="txt-contairner">
-                            <input class="txt-control" type="text" placeholder="Sale" v-model="priceSale" />
+                            <b-form-input  placeholder="Enter name" class="txt-control" v-model="priceSale"
+                            v-bind:class="{'is-invalid': errors.name}"
+                            v-validate="'required|alpha'"></b-form-input>
                         </div>
                     </div>
-                    <div v-if="isSale" class="validate-contairner">
-                        <div class="validate-text">*Enter sale</div>
+                    <div class="validate-edit">
+                        {{errors.priceSale}}
                     </div>
-                </div>
-            </div>
-        </div>
+                </b-form-group>
+            </b-form>
+        </b-container>
         <div class="btnContairner">
             <button @click="doSave" class="btn-save">Save</button>
             <button @click="clear" class="btn-clear">Clear</button>
@@ -181,14 +192,16 @@
                 createdDate: '',
                 updatedDate: '',
                 title: 'Add item',
-                isName: false,
-                isCategory: false,
-                isSpeed: false,
-                isStrenght: false,
-                isWeight: false,
-                isHeight: false,
-                isBuy: false,
-                isSale: false,
+                errors:{
+                    name: '',
+                    category: '',
+                    speed: '',
+                    strenght: '',
+                    weight: '',
+                    height: '',
+                    priceBuy: '',
+                    priceSale: '',
+                },
                 categoryList: categoryList,
             };
         },
@@ -211,15 +224,8 @@
             /// do Save action
             /// </summary>
             doSave(){
-                this.isName = this.checkValidate(this.name);
-                this.isCategory = this.checkValidate(this.category);
-                this.isSpeed = this.checkValidate(this.speed);
-                this.isStrenght = this.checkValidate(this.strenght);
-                this.isWeight = this.checkValidate(this.weight);
-                this.isHeight = this.checkValidate(this.height);
-                this.isBuy = this.checkValidate(this.priceBuy);
-                this.isSale = this.checkValidate(this.priceSale);
-                if(this.isName||this.isCategory||this.isSpeed||this.isStrenght||this.isWeight||this.isHeight||this.isBuy||this.isSale){
+                var resultCheck= this.checkValidate();
+                if(!resultCheck){
                     return;
                 }
                 var item= {
@@ -251,13 +257,47 @@
             /// check validate input
             /// </summary>
             /// <return></return>
-            checkValidate(value){
-                if(value.length==0){
-                    return true;
+            checkValidate(){
+                this.errors={
+                    name: '',
+                    category: '',
+                    speed: '',
+                    strenght: '',
+                    weight: '',
+                    height: '',
+                    priceBuy: '',
+                    priceSale: '',
                 }
-                else{
-                    return false;
+                var result= true;
+                if(!this.name){
+                    this.errors.name='Enter name!';
+                    result= false;
                 }
+                if(!this.speed){
+                    this.errors.speed='Enter date of speed!';
+                    result= false;
+                }
+                if(!this.strenght){
+                    this.errors.strenght='Enter number strenght!';
+                    result= false;
+                }
+                if(!this.weight){
+                    this.errors.weight='Enter weight!';
+                    result= false;
+                }
+                if(!this.height){
+                    this.errors.height='Enter height!';
+                    result= false;
+                }
+                if(!this.priceBuy){
+                    this.errors.priceBuy='Enter priceBuy!';
+                    result= false;
+                }
+                if(!this.priceSale){
+                    this.errors.priceSale='Enter priceSale!';
+                    result= false;
+                }
+                return result;
             },
 
             /// <summary>
@@ -309,6 +349,7 @@
         border-bottom: 1px solid #ccc;
     }
     .admin-create-edit-contairner{
+        padding-top: 45px;
         min-height: 470px;
     }
     .row-controlE{
@@ -317,11 +358,20 @@
     .control-contairnerE{
         display: flex;
         height: 100%;
-        width: 100%;
         justify-content: right;
         align-items: center;
         padding-right: 15%;
         margin-top: 30px;
+    }
+    .control-padding{
+        padding-right: 80px;
+        padding-bottom: 15px
+    }
+    .control-contairnerEdit{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: right;
     }
     .iconcontrol{
         height: 34px;
@@ -350,11 +400,6 @@
         padding: 0 15px;
         outline: none;
         border: none;
-    }
-    .file-input{
-        height: 34px;
-        width: 320px;
-        margin-left: 10px;
     }
     .icon-item{
         width: 15px;
@@ -386,24 +431,17 @@
         padding: 3px 15px;
         margin-left: 10px;
     }
-    .date-of-birth-contairner{
+    .date-of-birth{
         width: 320px;
         margin-left: 10px;
     }
     .row-Validate{
         
     }
-    .validate-contairner{
+    .validate-edit{
         position: absolute;
-        display: flex;
-        width: 100%;
-        justify-content: right;
-        align-items: center;
-        padding-right: 15%;
-        margin-top: -15px;
-    }
-    .validate-text{
-        width: 300px;
         color: red;
+        width: 300px;
+        margin-left: calc( 100% - 380px );
     }
 </style>

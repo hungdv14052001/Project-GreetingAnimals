@@ -1,6 +1,6 @@
 export const adminAPI= 'https://localhost:44346/api/Admins';
-export const itemAPI= 'https://localhost:44346/api/Admins';
-export const playerAPI= 'https://localhost:44346/api/Admins';
+export const itemAPI= 'https://localhost:44346/api/Items';
+export const playerAPI= 'https://localhost:44346/api/Players';
 
 /// <summary>
 /// post data into API

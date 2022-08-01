@@ -3,114 +3,131 @@
         <div class="create-edit-title">
             {{title}}
         </div>
-        <div class="admin-create-edit-contairner">
-            <div class="row row-controlE">
-                <div class="col">
-                    <div class="control-contairnerE">
+        <b-container class="admin-create-edit-contairner">
+            <b-form class="row row-controlE">
+                <b-form-group class="col control-padding" >
+                    <div class="control-contairnerEdit">
                         Name
                         <div class="iconcontrol ml10">
                             <div class="icon-item"></div>
                         </div>
                         <div class="txt-contairner">
-                            <input class="txt-control" type="text" placeholder="Name" v-model="name" />
+                            <b-form-input
+                            placeholder="Enter name" 
+                            class="txt-control" 
+                            v-model="name" 
+                            v-bind:class="{'is-invalid': errors.name}"
+                            v-validate="'required|alpha'"
+                            ></b-form-input>
                         </div>
                     </div>
-                    <div v-if="isName" class="validate-contairner">
-                        <div class="validate-text">*Enter name</div>
+                    <div class="validate-edit">
+                        {{errors.name}}
                     </div>
-                </div>
-                <div class="col">
-                    <div class="control-contairnerE">
+                </b-form-group>
+                <b-form-group class="col control-padding">
+                    <div class="control-contairnerEdit">
                         Email
                         <div class="iconcontrol ml10">
                             <div class="icon-item"></div>
                         </div>
                         <div class="txt-contairner">
-                            <input class="txt-control" type="text" placeholder="Email" v-model="email" />
+                            <b-form-input  placeholder="Enter name" class="txt-control" v-model="email"
+                            v-bind:class="{'is-invalid': errors.email}"
+                            v-validate="'required|alpha'"></b-form-input>
                         </div>
                     </div>
-                    <div v-if="isEmail" class="validate-contairner">
-                        <div class="validate-text">*Enter email</div>
+                    <div class="validate-edit">
+                        {{errors.email}}
                     </div>
-                </div>
-            </div>
-            <div class="row row-controlE">
-                <div class="col">
-                    <div class="control-contairnerE">
-                        Date of birth
-                        <div class="date-of-birth-contairner">
-                            <b-form-datepicker :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }" class="date-of-birth" v-model="dateofbirth"></b-form-datepicker>
-                        </div>
+                </b-form-group>
+            </b-form>
+            <b-form class="row row-controlE">
+                <b-form-group class="col control-padding">
+                    <div class="control-contairnerEdit">
+                        Birth day
+                        <b-form-datepicker :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }" v-model="dateofbirth" class="date-of-birth"
+                        v-bind:class="{'is-invalid': errors.dateofbirth}"
+                        v-validate="'required|alpha'"></b-form-datepicker>
                     </div>
-                    <div v-if="isDate" class="validate-contairner">
-                        <div class="validate-text">*Enter date of birth</div>
+                    <div class="validate-edit">
+                        {{errors.dateofbirth}}
                     </div>
-                </div>
-                <div class="col">
-                    <div class="control-contairnerE">
+                </b-form-group>
+                <b-form-group class="col control-padding">
+                    <div class="control-contairnerEdit">
                         Number phone
                         <div class="iconcontrol ml10">
                             <div class="icon-item"></div>
                         </div>
                         <div class="txt-contairner">
-                            <input class="txt-control" type="text" placeholder="Number phone" v-model="numPhone" />
+                            <b-form-input placeholder="Enter name" class="txt-control" v-model="numPhone"
+                            v-bind:class="{'is-invalid': errors.numPhone}"
+                            v-validate="'required|alpha'"></b-form-input>
                         </div>
                     </div>
-                    <div v-if="isNumPhone" class="validate-contairner">
-                        <div class="validate-text">*Enter number phone</div>
+                    <div class="validate-edit">
+                        {{errors.numPhone}}
                     </div>
-                </div>
-            </div>
-            <div class="row row-controlE">
-                <div class="col">
-                    <div class="control-contairnerE">
+                </b-form-group>
+            </b-form>
+            <b-form class="row row-controlE">
+                <b-form-group class="col control-padding">
+                    <div class="control-contairnerEdit">
                         Address
                         <div class="iconcontrol ml10">
                             <div class="icon-item"></div>
                         </div>
                         <div class="txt-contairner">
-                            <input class="txt-control" type="text" placeholder="Address" v-model="address" />
+                            <b-form-input  placeholder="Enter name" class="txt-control" v-model="address"
+                            v-bind:class="{'is-invalid': errors.address}"
+                            v-validate="'required|alpha'"></b-form-input>
                         </div>
                     </div>
-                    <div v-if="isAddress" class="validate-contairner">
-                        <div class="validate-text">*Enter address</div>
+                    <div class="validate-edit">
+                        {{errors.address}}
                     </div>
-                </div>
-                <div class="col">
-                    <div class="control-contairnerE"></div>
-                </div>
-            </div>
-            <div class="row row-controlE">
-                <div class="col">
-                    <div class="control-contairnerE">
+                </b-form-group>
+                <b-form-group class="col control-padding">
+
+                </b-form-group>
+            </b-form>
+            <b-form class="row row-controlE">
+                <b-form-group class="col control-padding">
+                    <div class="control-contairnerEdit">
                         Password
                         <div class="iconcontrol ml10">
                             <div class="icon-item"></div>
                         </div>
                         <div class="txt-contairner">
-                            <input class="txt-control" type="password" autocomplete="off" placeholder="Password" v-model="passwordAdmin" required/>
+                            <b-form-input type="password"  placeholder="Enter name" class="txt-control" v-model="passwordAdmin"
+                            v-bind:class="{'is-invalid': errors.passwordAdmin}"
+                            v-validate="'required|alpha'"></b-form-input>
                         </div>
                     </div>
-                    <div v-if="isPassword" class="validate-contairner">
-                        <div class="validate-text">*Enter password</div>
+                    <div class="validate-edit">
+                        {{errors.passwordAdmin}}
                     </div>
-                </div>
-                <div class="col">
-                    <div class="control-contairnerE">
-                        *Confirm password
+                </b-form-group>
+                <b-form-group class="col control-padding">
+                    <div class="control-contairnerEdit">
+                        Confirm password
                         <div class="iconcontrol ml10">
                             <div class="icon-item"></div>
                         </div>
                         <div class="txt-contairner">
-                            <input class="txt-control" type="password" autocomplete="off" placeholder="Confirm password" v-model="confirmPassword" required/>
+                            <b-form-input type="password" placeholder="Enter name" class="txt-control" v-model="confirmPassword"
+                            v-bind:class="{'is-invalid': errors.confirmPassword}"
+                            v-validate="'required|alpha'"></b-form-input>
                         </div>
                     </div>
-                    <div v-if="isConfirm" class="validate-contairner">
-                        <div class="validate-text">*Enter confirm password</div>
+                    <div class="validate-edit">
+                        {{errors.confirmPassword}}
                     </div>
-                </div>
-            </div>
-        </div>
+                </b-form-group>
+                
+            </b-form>
+        </b-container>
         <div class="btnContairner">
             <button @click="doSave" class="btn-save">Save</button>
             <button @click="clear" class="btn-clear">Clear</button>
@@ -154,13 +171,15 @@
                 createdDate: '',
                 updatedDate: '',
                 title: 'Add admin',
-                isName: false,
-                isEmail: false,
-                isDate: false,
-                isNumPhone: false,
-                isAddress: false,
-                isPassword: false,
-                isConfirm: false
+                errors:{
+                    name: '',
+                    email: '',
+                    dateofbirth: '',
+                    numPhone: '',
+                    address: '',
+                    passwordAdmin: '',
+                    confirmPassword: '',
+                }
             };
         },
         methods: {
@@ -183,14 +202,8 @@
             /// do Save action
             /// </summary>
             doSave(){
-                this.isName = this.checkValidate(this.name);
-                this.isEmail = this.checkValidate(this.email);
-                this.isNumPhone = this.checkValidate(this.numPhone);
-                this.isDate = this.checkValidate(this.dateofbirth);
-                this.isAddress = this.checkValidate(this.address);
-                this.isPassword = this.checkValidate(this.passwordAdmin);
-                this.isConfirm = this.checkValidate(this.confirmPassword);
-                if(this.isName||this.isEmail||this.isNumPhone||this.isDate||this.isAddress||this.isPassword||this.isConfirm){
+                var resultCheck= this.checkValidate();
+                if(!resultCheck){
                     return;
                 }
                 if(this.passwordAdmin!=this.confirmPassword){
@@ -223,13 +236,46 @@
             /// check validate controls
             /// </summary>
             /// <return>bool</return>
-            checkValidate(value){
-                if(value.length==0){
-                    return true;
+            checkValidate(){
+                this.errors={
+                    name: '',
+                    email: '',
+                    dateofbirth: '',
+                    numPhone: '',
+                    address: '',
+                    passwordAdmin: '',
+                    confirmPassword: '',
                 }
-                else{
-                    return false;
+                var result= true;
+                if(!this.name){
+                    this.errors.name='Enter name!';
+                    result= false;
                 }
+                if(!this.email){
+                    this.errors.email='Enter email!';
+                    result= false;
+                }
+                if(!this.dateofbirth){
+                    this.errors.dateofbirth='Enter date of birth!';
+                    result= false;
+                }
+                if(!this.numPhone){
+                    this.errors.numPhone='Enter number phone!';
+                    result= false;
+                }
+                if(!this.address){
+                    this.errors.address='Enter address!';
+                    result= false;
+                }
+                if(!this.passwordAdmin){
+                    this.errors.passwordAdmin='Enter password!';
+                    result= false;
+                }
+                if(!this.confirmPassword){
+                    this.errors.confirmPassword='Enter confirm password!';
+                    result= false;
+                }
+                return result;
             },
 
             /// <summary>
@@ -256,7 +302,7 @@
                     });
             },
             postData,
-            pushData,
+            putData,
         }
     }
 
@@ -280,6 +326,7 @@
         border-bottom: 1px solid #ccc;
     }
     .admin-create-edit-contairner{
+        padding-top: 45px;
         min-height: 470px;
     }
     .row-controlE{
@@ -288,11 +335,20 @@
     .control-contairnerE{
         display: flex;
         height: 100%;
-        width: 100%;
         justify-content: right;
         align-items: center;
         padding-right: 15%;
         margin-top: 30px;
+    }
+    .control-padding{
+        padding-right: 80px;
+        padding-bottom: 15px
+    }
+    .control-contairnerEdit{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: right;
     }
     .iconcontrol{
         height: 34px;
@@ -352,24 +408,17 @@
         padding: 3px 15px;
         margin-left: 10px;
     }
-    .date-of-birth-contairner{
+    .date-of-birth{
         width: 320px;
         margin-left: 10px;
     }
     .row-Validate{
         
     }
-    .validate-contairner{
+    .validate-edit{
         position: absolute;
-        display: flex;
-        width: 100%;
-        justify-content: right;
-        align-items: center;
-        padding-right: 15%;
-        margin-top: -15px;
-    }
-    .validate-text{
-        width: 300px;
         color: red;
+        width: 300px;
+        margin-left: calc( 100% - 380px );
     }
 </style>

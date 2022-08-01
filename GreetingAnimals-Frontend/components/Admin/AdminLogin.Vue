@@ -14,28 +14,36 @@
                 </div>
             </div>
         </div>
-        <div class="control-contairner">
-            <div class="control-item">
-                <input class="txtControl" type="text" placeholder="User name" v-model="username">
-            </div>
-            <div class="validation">
-                <div id="username-Validation" v-if="isUserName">
-                    Enter your username!
-                </div>
-            </div>
-            <div class="control-item">
-                <input class="txtControl" type="password" placeholder="Password" v-model="password">
-            </div>
-            <div class="validation">
-                <div id="password-Validation" v-if="isPassword">
-                    Enter your password!
-                </div>
-            </div>
-            <button @click="Login" class="btnLogin">Login</button>
+        <b-form class="control-contairner" @submit="Login">
+            <b-form-group>
+                <b-form-input
+                v-model="username"
+                type="email"
+                placeholder="Enter email"
+                required
+                class="txtControl"
+                v-bind:class="{'is-invalid': errors.name}"
+                v-validate="'required|alpha'"
+                ></b-form-input>
+                <div class="validation">{{errors.name}}</div>
+            </b-form-group>
+            <b-form-group>
+                <b-form-input
+                v-model="password"
+                type="password"
+                placeholder="Enter password"
+                required
+                class="txtControl"
+                v-bind:class="{'is-invalid': errors.password}"
+                v-validate="'required|alpha'"
+                ></b-form-input>
+                <div class="validation">{{errors.password}}</div>
+            </b-form-group>
+            <b-button @click="Login" class="btnLogin" >Login</b-button>
             <a class="foget-password" href="#">Foget password?</a>
             <div class="seperation"></div>
-            <button class="btnLogin btnRegister">Register</button>
-        </div>
+            <b-button class="btnRegister" >Register</b-button>
+        </b-form>
     </div>
 </template>
 
@@ -53,8 +61,10 @@
             return{
                 username: '',
                 password: '',
-                isUserName: false,
-                isPassword: false,
+                errors:{
+                    username: '',
+                    password: '',
+                }
             };
         },
 
@@ -64,27 +74,9 @@
             /// User Login
             /// </summary>
             Login(){
-                var loginResult= false;
-                var username = this.username;
-                var password = this.password;
-                var idUser=0;
-                var resultCheck= true;
-                if(username.length==0){
-                  this.isUserName= true;
-                  resultCheck= false;
-                }
-                else{
-                  this.isUserName= false;
-                }
-                if(password.length==0){
-                  this.isPassword= true;
-                  resultCheck= false;
-                }
-                else{
-                  this.isPassword= false;
-                }
-                if(resultCheck==false){
-                  return;
+                var resultValid = this.validate();
+                if(!resultValid){
+                    return;
                 }
                 var account={
                     userName: this.username,
@@ -102,6 +94,27 @@
                             alert("Username or password is incorrect");
                         }
                     });
+            },
+
+            validate(){
+                this.errors={
+                    username: '',
+                    password: '',
+                }
+                var result= true;
+                if(!this.username){
+                    this.errors.name='Enter email!';
+                    result= false;
+                }
+                if(!this.username.includes('@')&&!this.username.includes('.')){
+                    this.errors.name='Username must be email!';
+                    result= false;
+                }
+                if(!this.password){
+                    this.errors.password='Enter password!';
+                    result= false;
+                }
+                return result;
             },
 
             /// <summary>
@@ -128,13 +141,6 @@
 <style>
     #admin-login{
         display: flex;
-    }
-    .login-contairner{
-        width: 100%;
-        height: 680px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
     .red{
         color: #ff0000;
@@ -170,36 +176,27 @@
         background-color: #fff;
         border-radius: 3px;
         margin-top: -40px;
-    }
-    .control-item{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-        width: 80%;
-        margin-left: 10%;
-        height: 36px;
-        margin-top: 25px;
+        padding-top: 35px;
     }
     .validation{
         position: absolute;
-        height: 15px;
         color: #ff0000;
-        margin-left: 2%;
+        margin-left: 35px;
+        margin-top: -10px;
     }
     .txtControl{
         outline: none;
-        border: none;
-        height: 28px;
-        width: 90%;
+        height: 34px;
+        width: 80%;
+        margin-left: 10%;
+        margin-bottom: 10px;
     }
     .btnLogin{
         border-radius: 18px;
         width: 80%;
         margin-left: 10%;
         height: 45px;
-        margin-top: 25px;
+        margin-top: 10px;
         background-color: #303030;
         color: #ff0000;
         font-size: 21px;
@@ -218,6 +215,15 @@
     }
     .btnRegister{
         color: #fff;
+        border-radius: 18px;
+        width: 80%;
+        margin-left: 10%;
+        height: 45px;
+        margin-top: 25px;
+        background-color: #303030;
+        font-size: 21px;
+        font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
     }
     .login-footer{
         width: 100%;
@@ -237,3 +243,4 @@
         border-bottom: 1px solid #ccc;
     }
 </style>
+

@@ -8,44 +8,36 @@
                 <i class="icon-text">{{iconSearch}}</i>
                 Searching criteria
             </div>
-            <div v-if="isSearch" class="search-container">
-                <div class="row row-label">
-                    <div class="col">
-                        Name
-                    </div>
-                    <div class="col">
-                        Email
-                    </div>
-                </div>
+            <b-form class="search-container" v-if="isSearch">
                 <div class="row row-control">
-                    <div class="col">
+                    <b-form-group label="Name:" label-for="input-name" class="col">
                         <div class="control-contairner">
                             <div class="iconcontrol">
                                 <div class="icon-item"></div>
                             </div>
                             <div class="txt-contairner">
-                                <input class="txt-control" type="text" placeholder="Name" v-model="keyName" />
+                                <b-form-input id="input-name" placeholder="Enter name" class="txt-control" v-model="keyName"></b-form-input>
                             </div>
                         </div>
-                    </div>
-                    <div class="col">
+                    </b-form-group>
+                    <b-form-group label="Email:" label-for="input-email" class="col">
                         <div class="control-contairner">
                             <div class="iconcontrol">
                                 <div class="icon-item"></div>
                             </div>
                             <div class="txt-contairner">
-                                <input class="txt-control" type="text" placeholder="Email" v-model="keyEmail" />
+                                <b-form-input id="input-email" class="txt-control" placeholder="Enter email" v-model="keyEmail"></b-form-input>
                             </div>
                         </div>
-                    </div>
-                    <div class="col">
-                        <div class="control-contairner">
-                            <button @click="search" class="btnSearch">Search</button>
-                            <button @click="clear" class="btnClear">Clear</button>
+                    </b-form-group>
+                    <b-form-group class="col">
+                        <div class="button-search-contairner">
+                            <b-button @click="search" class="btnSearch">Search</b-button>
+                            <b-button @click="clear" class="btnClear">Clear</b-button>
                         </div>
-                    </div>
+                    </b-form-group>
                 </div>
-            </div>
+            </b-form>
             <div class="list-container">
                 <div class="row row-header-list">
                     <div class="col">
@@ -304,6 +296,11 @@
         align-items: center;
         background-color: white; 
         border: 1px solid #ccc;
+    }
+    .button-search-contairner{
+        display: flex;
+        justify-content: left;
+        margin-top: 21px;
     }
     .txt-contairner{
         height: 34px;

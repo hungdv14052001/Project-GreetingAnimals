@@ -3,117 +3,115 @@
         <div class="create-edit-title">
             {{title}}
         </div>
-        <div class="admin-create-edit-contairner">
-            <div class="row row-controlE">
-                <div class="col">
-                    <div class="control-contairnerE">
+        <b-container class="admin-create-edit-contairner">
+            <b-form class="row row-controlE">
+                <b-form-group class="col control-padding" >
+                    <div class="control-contairnerEdit">
                         Name
                         <div class="iconcontrol ml10">
                             <div class="icon-item"></div>
                         </div>
                         <div class="txt-contairner">
-                            <input class="txt-control" type="text" placeholder="Name" v-model="name" readonly />
+                            <b-form-input  placeholder="Enter name" class="txt-control" v-model="name"></b-form-input>
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="control-contairnerE">
+                </b-form-group>
+                <b-form-group class="col control-padding">
+                    <div class="control-contairnerEdit">
                         Tag
                         <div class="iconcontrol ml10">
                             <div class="icon-item"></div>
                         </div>
                         <div class="txt-contairner">
-                            <input class="txt-control" type="text" placeholder="Tag" v-model="tag" readonly />
+                            <b-form-input  placeholder="Enter tag" class="txt-control" v-model="tag"></b-form-input>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="row row-controlE">
-                <div class="col">
-                    <div class="control-contairnerE">
-                        Date of birth
-                        <div class="date-of-birth-contairner">
-                            <b-form-datepicker :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }" class="date-of-birth" v-model="dateofbirth" readonly ></b-form-datepicker>
-                        </div>
+                </b-form-group>
+            </b-form>
+            <b-form class="row row-controlE">
+                <b-form-group class="col control-padding">
+                    <div class="control-contairnerEdit">
+                        Birth day
+                        <b-form-datepicker :date-format-options="{ year: 'numeric', month: 'numeric', day: 'numeric' }" v-model="dateofbirth" class="date-of-birth"></b-form-datepicker>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="control-contairnerE">
+                </b-form-group>
+                <b-form-group class="col control-padding">
+                    <div class="control-contairnerEdit">
                         Number phone
                         <div class="iconcontrol ml10">
                             <div class="icon-item"></div>
                         </div>
                         <div class="txt-contairner">
-                            <input class="txt-control" type="text" placeholder="Number phone" v-model="numPhone" readonly />
+                            <b-form-input placeholder="Enter number phone" class="txt-control" v-model="numPhone"></b-form-input>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="row row-controlE">
-                <div class="col">
-                    <div class="control-contairnerE">
+                </b-form-group>
+            </b-form>
+            <b-form class="row row-controlE">
+                <b-form-group class="col control-padding">
+                    <div class="control-contairnerEdit">
                         Address
                         <div class="iconcontrol ml10">
                             <div class="icon-item"></div>
                         </div>
                         <div class="txt-contairner">
-                            <input class="txt-control" type="text" placeholder="Address" v-model="address" readonly />
+                            <b-form-input  placeholder="Enter address" class="txt-control" v-model="address"></b-form-input>
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="control-contairnerE"></div>
-                </div>
-            </div>
-            <div class="row row-controlE">
-                <div class="col">
-                    <div class="control-contairnerE">
+                </b-form-group>
+                <b-form-group class="col control-padding">
+
+                </b-form-group>
+            </b-form>
+            <b-form class="row row-controlE">
+                <b-form-group class="col control-padding" >
+                    <div class="control-contairnerEdit">
                         Level
                         <div class="iconcontrol ml10">
                             <div class="icon-item"></div>
                         </div>
                         <div class="txt-contairner">
-                            <input class="txt-control" type="text" autocomplete="off" placeholder="Level" v-model="level" readonly/>
+                            <b-form-input  placeholder="Enter level" class="txt-control" v-model="level"></b-form-input>
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="control-contairnerE">
+                </b-form-group>
+                <b-form-group class="col control-padding">
+                    <div class="control-contairnerEdit">
                         Rank
                         <div class="iconcontrol ml10">
                             <div class="icon-item"></div>
                         </div>
                         <div class="txt-contairner">
-                            <input class="txt-control" type="text" autocomplete="off" placeholder="Rank" v-model="rank" readonly/>
+                            <b-form-input  placeholder="Enter name" class="txt-control" v-model="rank"></b-form-input>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="row row-controlE">
-                <div class="col">
-                    <div class="control-contairnerE">
+                </b-form-group>
+            </b-form>
+            <b-form class="row row-controlE">
+                <b-form-group class="col control-padding" >
+                    <div class="control-contairnerEdit">
                         Gold
                         <div class="iconcontrol ml10">
                             <div class="icon-item"></div>
                         </div>
                         <div class="txt-contairner">
-                            <input class="txt-control" type="text" autocomplete="off" placeholder="Password" v-model="gold" readonly/>
+                            <b-form-input  placeholder="Enter name" class="txt-control" v-model="gold"></b-form-input>
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="control-contairnerE">
+                </b-form-group>
+                <b-form-group class="col control-padding">
+                    <div class="control-contairnerEdit">
                         Diamond
                         <div class="iconcontrol ml10">
                             <div class="icon-item"></div>
                         </div>
                         <div class="txt-contairner">
-                            <input class="txt-control" type="text" autocomplete="off" placeholder="Confirm password" v-model="diamond" readonly/>
+                            <b-form-input  placeholder="Enter name" class="txt-control" v-model="diamond"></b-form-input>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                </b-form-group>
+            </b-form>
+        </b-container>
         <div class="btnContairner">
             <button @click="oke" class="btn-save">Oke</button>
         </div>
@@ -180,7 +178,7 @@
 
 </script>
 <style>
-    #admin-create-edit{
+#admin-create-edit{
         min-height: 585px;
         width: calc(100% - 50px);
         background-color: white;
@@ -198,6 +196,7 @@
         border-bottom: 1px solid #ccc;
     }
     .admin-create-edit-contairner{
+        padding-top: 45px;
         min-height: 470px;
     }
     .row-controlE{
@@ -206,11 +205,20 @@
     .control-contairnerE{
         display: flex;
         height: 100%;
-        width: 100%;
         justify-content: right;
         align-items: center;
         padding-right: 15%;
         margin-top: 30px;
+    }
+    .control-padding{
+        padding-right: 80px;
+        padding-bottom: 15px
+    }
+    .control-contairnerEdit{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: right;
     }
     .iconcontrol{
         height: 34px;
@@ -270,24 +278,34 @@
         padding: 3px 15px;
         margin-left: 10px;
     }
-    .date-of-birth-contairner{
+    .date-of-birth{
         width: 320px;
         margin-left: 10px;
     }
     .row-Validate{
         
     }
-    .validate-contairner{
+    .validate-edit{
         position: absolute;
-        display: flex;
-        width: 100%;
-        justify-content: right;
-        align-items: center;
-        padding-right: 15%;
-        margin-top: -15px;
-    }
-    .validate-text{
-        width: 300px;
         color: red;
+        width: 300px;
+        margin-left: calc( 100% - 380px );
+    }
+    .btnContairner{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 50px;
+        border-top: 1px solid #ccc;
+        width: 100%;
+
+    }
+    .btn-save{
+        background-color: #007BFF;
+        color: white;
+        border-radius: 3px;
+        padding: 4px 15px;
+        border: none;
+        margin-right: 10px;
     }
 </style>
