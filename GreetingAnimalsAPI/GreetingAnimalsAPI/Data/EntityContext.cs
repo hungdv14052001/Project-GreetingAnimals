@@ -15,6 +15,7 @@ namespace GreetingAnimalsAPI.Data
         {
         }
 
+
         public DbSet<Admin> Admins { get; set; }
 
         public DbSet<Player> Players { get; set; }

@@ -96,7 +96,7 @@ namespace GreetingAnimalsAPI.Controllers
             }
             catch (Exception exp)
             {
-                throw
+                throw exp;
             }
         }
 

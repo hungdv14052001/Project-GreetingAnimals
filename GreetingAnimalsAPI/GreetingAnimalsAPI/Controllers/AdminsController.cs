@@ -9,6 +9,7 @@ using GreetingAnimalsAPI.Data;
 using GreetingAnimalsAPI.Models;
 using GreetingAnimalsAPI.Repositories;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GreetingAnimalsAPI.Controllers
 {
@@ -33,6 +34,7 @@ namespace GreetingAnimalsAPI.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Admin>>> GetAdmins()
         {
             return adminRepository.GetAllEntity();
@@ -45,6 +47,7 @@ namespace GreetingAnimalsAPI.Controllers
         /// <param name="id"></param>
         /// <returns>Admin</returns>
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<Admin>> GetAdmin(int id)
         {
             var admin = adminRepository.GetEntityById(id);

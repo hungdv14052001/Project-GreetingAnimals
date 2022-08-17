@@ -67,7 +67,6 @@ namespace GreetingAnimalsAPI.Controllers
         [HttpGet("idPlayer={idPlayer}")]
         public async Task<ActionResult<IEnumerable<DetailItemList>>> GetDetailItemListByIdPlayer(int idPlayer)
         {
-            
             try
             {
                 return detailItemListRepository.GetDetailItemListsByIdPlayer(idPlayer);
